@@ -25,8 +25,10 @@ public class ParseApplication extends Application
 	public void onCreate() {
 		super.onCreate();
 		// register device for parse
+		<% if('parse' in app && typeof app.parse === 'object' && app.parse !== null && 'app_id' in app.parse && 'client_key' in app.parse) { %>
 		Parse.initialize(this, "<%=app.parse.app_id%>", "<%=app.parse.client_key%>");
 		PushService.setDefaultPushCallback(this, CordovaApp.class);
 		ParseInstallation.getCurrentInstallation().saveInBackground();
+		<% } %>
 	}
 }
