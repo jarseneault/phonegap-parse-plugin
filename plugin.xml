@@ -49,7 +49,7 @@
 		<source-file src="src/android/parse/bolts-android-1.1.4.jar" target-dir="libs" framework="true" />
         <source-file src="src/android/parse/Parse-1.8.2.jar" target-dir="libs" framework="true" />
         <source-file src="src/android/ParsePlugin.java" target-dir="src/org/apache/cordova/core" />
-        <!--<source-file src="src/android/ParseApplication.java" target-dir="src/org/apache/cordova/core" />-->
+        <source-file src="src/android/ParseApplication.java" target-dir="src/org/apache/cordova/core" />
         
         <info><![CDATA[
 A couple of changes are needed to receive push notifications when the app is not
