@@ -7,7 +7,7 @@ import com.parse.Parse;
 import com.parse.ParseInstallation;
 import com.parse.PushService;
 
-import <%=app.id%>.MainActivity;
+import <%=app.android_id%>.MainActivity;
 
 public class ParseApplication extends Application 
 {
