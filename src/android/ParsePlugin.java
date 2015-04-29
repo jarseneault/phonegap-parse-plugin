@@ -11,6 +11,8 @@ import com.parse.Parse;
 import com.parse.ParseInstallation;
 import com.parse.PushService;
 
+import <%=app.android_id%>.R;
+
 public class ParsePlugin extends CordovaPlugin {
     public static final String ACTION_INITIALIZE = "initialize";
     public static final String ACTION_GET_INSTALLATION_ID = "getInstallationId";
@@ -56,7 +58,7 @@ public class ParsePlugin extends CordovaPlugin {
                     String appId = args.getString(0);
                     String clientKey = args.getString(1);
                     Parse.initialize(cordova.getActivity(), appId, clientKey);
-                    PushService.setDefaultPushCallback(cordova.getActivity(), cordova.getActivity().getClass());
+                    PushService.setDefaultPushCallback(cordova.getActivity(), cordova.getActivity().getClass(), R.drawable.push_icon);
                     ParseInstallation.getCurrentInstallation().saveInBackground();
                     callbackContext.success();
                 } catch (JSONException e) {
