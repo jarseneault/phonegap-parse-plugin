@@ -11,6 +11,8 @@ import com.parse.Parse;
 import com.parse.ParseInstallation;
 import com.parse.PushService;
 
+import android.content.Context;
+
 import <%=app.android_id%>.R;
 
 public class ParsePlugin extends CordovaPlugin {
@@ -58,7 +60,18 @@ public class ParsePlugin extends CordovaPlugin {
                     String appId = args.getString(0);
                     String clientKey = args.getString(1);
                     Parse.initialize(cordova.getActivity(), appId, clientKey);
-                    PushService.setDefaultPushCallback(cordova.getActivity(), cordova.getActivity().getClass(), R.drawable.push_icon);
+                    
+                    Context appContext = cordova.getActivity().getApplicationContext();
+                    int push_icon_resource_id = appContext.getResources().getIdentifier("push_icon", "drawable", appContext.getPackageName());
+                    
+                    if(push_icon_resource_id != 0)
+                    {
+                        PushService.setDefaultPushCallback(cordova.getActivity(), cordova.getActivity().getClass(), push_icon_resource_id);
+                    }
+                    else
+                    {
+                        PushService.setDefaultPushCallback(cordova.getActivity(), cordova.getActivity().getClass());
+                    }
                     ParseInstallation.getCurrentInstallation().saveInBackground();
                     callbackContext.success();
                 } catch (JSONException e) {
